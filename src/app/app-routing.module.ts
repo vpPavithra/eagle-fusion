@@ -286,11 +286,11 @@ const routes: Routes = [
     loadChildren: () => import('./routes/route-app-toc.module').then(u => u.RouteAppTocModule),
     canActivate: [GeneralGuard],
   },
-  {
-    path: 'hi/app/toc',
-    loadChildren: () => import('./routes/route-app-toc.module').then(u => u.RouteAppTocModule),
-    canActivate: [GeneralGuard],
-  },
+  // {
+  //   path: 'hi/app/toc',
+  //   loadChildren: () => import('./routes/route-app-toc.module').then(u => u.RouteAppTocModule),
+  //   canActivate: [GeneralGuard],
+  // },
   {
     path: 'app/user-profile',
     loadChildren: () =>
@@ -402,42 +402,42 @@ const routes: Routes = [
     component: GoogleCallbackComponent,
   },
   { path: 'home', redirectTo: 'page/home', pathMatch: 'full' },
-  { path: 'hi/hi/page/home', redirectTo: 'hi/page/home', pathMatch: 'full' },
-  {
-    path: 'hi/app/profile',
-    loadChildren: () =>
-      import('./routes/route-profile-app.module').then(u => u.RouteProfileAppModule),
-    canActivate: [GeneralGuard],
-  },
-  {
-    path: 'hi/app/profile-view',
-    component: MobileProfileDashboardComponent,
-    canActivate: [GeneralGuard],
-  },
-  {
-    path: 'hi/app/about-you',
-    component: AboutYou,
-  },
-  {
-    path: 'hi/app/user/competency',
-    component: CompetencyDashboardComponent,
-    canActivate: [GeneralGuard],
-  },
-  {
-    path: 'hi/app/user/my_courses',
-    component: MyCoursesComponent,
-    canActivate: [GeneralGuard]
-  },
-  {
-    path: 'hi/notification',
-    component: NotificationsComponent,
-    canActivate: [GeneralGuard],
-    data: { animation: 'notification' }
-  },
-  {
-    path: 'hi/app/org-selective-course',
-    component: OrgSelectiveCourseComponent,
-  },
+  // { path: 'hi/hi/page/home', redirectTo: 'hi/page/home', pathMatch: 'full' },
+  // {
+  //   path: 'hi/app/profile',
+  //   loadChildren: () =>
+  //     import('./routes/route-profile-app.module').then(u => u.RouteProfileAppModule),
+  //   canActivate: [GeneralGuard],
+  // },
+  // {
+  //   path: 'hi/app/profile-view',
+  //   component: MobileProfileDashboardComponent,
+  //   canActivate: [GeneralGuard],
+  // },
+  // {
+  //   path: 'hi/app/about-you',
+  //   component: AboutYou,
+  // },
+  // {
+  //   path: 'hi/app/user/competency',
+  //   component: CompetencyDashboardComponent,
+  //   canActivate: [GeneralGuard],
+  // },
+  // {
+  //   path: 'hi/app/user/my_courses',
+  //   component: MyCoursesComponent,
+  //   canActivate: [GeneralGuard]
+  // },
+  // {
+  //   path: 'hi/notification',
+  //   component: NotificationsComponent,
+  //   canActivate: [GeneralGuard],
+  //   data: { animation: 'notification' }
+  // },
+  // {
+  //   path: 'hi/app/org-selective-course',
+  //   component: OrgSelectiveCourseComponent,
+  // },
   {
     path: 'login',
     canActivate: [LoginGuard],
@@ -515,37 +515,37 @@ const routes: Routes = [
     },
     canActivate: [GeneralGuard],
   },
-  {
-    path: 'hi/page/toc',
-    redirectTo: '/',
-    pathMatch: 'full',
-  },
-  {
-    path: 'hi/page/toc/:id',
-    data: {
-      pageType: 'page',
-      pageKey: 'toc',
-    },
-    resolve: {
-      pageData: PageResolve,
-      content: AppTocResolverService,
-    },
-    runGuardsAndResolvers: 'paramsChange',
-    component: PageComponent,
-    canActivate: [GeneralGuard],
-  },
-  {
-    path: 'hi/page/:id',
-    component: PageComponent,
-    data: {
-      pageType: 'page',
-      pageKey: 'id',
-    },
-    resolve: {
-      pageData: PageResolve,
-    },
-    canActivate: [GeneralGuard],
-  },
+  // {
+  //   path: 'hi/page/toc',
+  //   redirectTo: '/',
+  //   pathMatch: 'full',
+  // },
+  // {
+  //   path: 'hi/page/toc/:id',
+  //   data: {
+  //     pageType: 'page',
+  //     pageKey: 'toc',
+  //   },
+  //   resolve: {
+  //     pageData: PageResolve,
+  //     content: AppTocResolverService,
+  //   },
+  //   runGuardsAndResolvers: 'paramsChange',
+  //   component: PageComponent,
+  //   canActivate: [GeneralGuard],
+  // },
+  // {
+  //   path: 'hi/page/:id',
+  //   component: PageComponent,
+  //   data: {
+  //     pageType: 'page',
+  //     pageKey: 'id',
+  //   },
+  //   resolve: {
+  //     pageData: PageResolve,
+  //   },
+  //   canActivate: [GeneralGuard],
+  // },
   // {
   //   path: 'page/explore/:tags',
   //   data: {
@@ -658,14 +658,14 @@ const routes: Routes = [
     loadChildren: () => import('./routes/route-viewer.module').then(u => u.RouteViewerModule),
     canActivate: [GeneralGuard],
   },
-  {
-    path: 'hi/viewer',
-    data: {
-      topBar: ETopBar.NONE,
-    },
-    loadChildren: () => import('./routes/route-viewer.module').then(u => u.RouteViewerModule),
-    canActivate: [GeneralGuard],
-  },
+  // {
+  //   path: 'hi/viewer',
+  //   data: {
+  //     topBar: ETopBar.NONE,
+  //   },
+  //   loadChildren: () => import('./routes/route-viewer.module').then(u => u.RouteViewerModule),
+  //   canActivate: [GeneralGuard],
+  // },
   {
     path: '**',
     component: ErrorResolverComponent,

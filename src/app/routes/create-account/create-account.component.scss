@@ -446,19 +446,20 @@ span.mat-button-wrapper {
 .gray-dot{
   width:8px;
   height:8px;
-.login-method-container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+  .login-method-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
 
-.login-method-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  .login-method-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 
-  .next-btn-div {
-    align-self: flex-end;
-    margin: 0;
+    .next-btn-div {
+      align-self: flex-end;
+      margin: 0;
+    }
   }
 }

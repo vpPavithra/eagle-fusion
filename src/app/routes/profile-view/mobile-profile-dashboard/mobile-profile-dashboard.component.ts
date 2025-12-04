@@ -15,6 +15,7 @@ import { ConfigService as CompetencyConfiService } from '../../competency/servic
 import * as _ from './lodash'
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms'
 import { DOCUMENT } from '@angular/common'
+import { TranslateService } from '@ngx-translate/core'
 
 @Component({
   selector: 'ws-mobile-profile-dashboard',
@@ -61,8 +62,8 @@ export class MobileProfileDashboardComponent implements OnInit {
     private domSanitizer: DomSanitizer,
     private valueSvc: ValueService,
     private CompetencyConfiService: CompetencyConfiService,
-    // private readonly _renderer2: Renderer,
-    @Inject(DOCUMENT) private _document: Document
+    @Inject(DOCUMENT) private _document: Document,
+    private translate: TranslateService
 
   ) {
     this.gotData = this.contentSvc.workMessage.subscribe(async (data: any) => {
@@ -395,6 +396,7 @@ export class MobileProfileDashboardComponent implements OnInit {
       // personalDetails: this.userData['profileDetails'].profileReq.personalDetails,
       userSource: this.configSvc.unMappedUser?.profileDetails?.userSource || null,
     }
+    this.translate.use(form.value.language)
     const userdata = Object.assign(this.userData['profileDetails'], obj)
     //   // this.chosenLanguage = path.value
     const reqUpdate = {

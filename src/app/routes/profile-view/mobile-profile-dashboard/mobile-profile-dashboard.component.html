@@ -321,7 +321,7 @@
             </span>
           </label>
         </div>
-        <button type="submit" class="save-btn" (click)="saveLanguage(userForm)" i18n>Save</button>
+        <button type="submit" class="save-btn" (click)="saveLanguage(userForm)">{{ 'Save' | translate }}</button>
       </form>
     </div>
     <div *ngIf="selectedIndex === 'certificates'" style="width:100%"

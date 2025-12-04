@@ -3,7 +3,7 @@ import {
   APP_BASE_HREF, PlatformLocation,
   CommonModule
 } from '@angular/common'
-import { HttpClientJsonpModule, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HttpClientJsonpModule, HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http'
 import { APP_INITIALIZER, Injectable, NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core'
 // import { GestureConfig } from '@angular/material/core/gestures/gesture-config'
 // import * as Hammer from 'hammerjs'
@@ -154,6 +154,8 @@ import { NotificationsComponent } from './routes/notification/notification.compo
 import { TnnmcCallbackComponent } from './tnnmc-callback/tnnmc-callback.component'
 import { TnnmcConfirmComponent } from './component/tnnmc-dialog-confirm/tnnmc-confirm.component'
 import { TextFieldModule } from '@angular/cdk/text-field'
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core'
+import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 
 @Injectable()
 export class HammerConfig extends HammerGestureConfig {
@@ -257,6 +259,9 @@ const dbConfig: DBConfig = {
 }
 
 // tslint:disable-next-line: max-classes-per-file
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json')
+}
 @NgModule({
   declarations: [
     RootComponent,
@@ -391,7 +396,15 @@ const dbConfig: DBConfig = {
     PipeHtmlTagRemovalModule,
     HorizontalScrollerModule,
     NgxIndexedDBModule.forRoot(dbConfig),
-    TextFieldModule
+    TextFieldModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   exports: [
     TncComponent, AppPublicNavBarComponent, RegisterComponent, ForgotPasswordComponent,
@@ -437,7 +450,14 @@ const dbConfig: DBConfig = {
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private translate: TranslateService) {
+    let lang = this.translate.currentLang
+    console.log('******** lang. ', lang)
+    this.translate.setDefaultLang('en')
+    this.translate.use('en')
+  }
+}
 
 declare global {
   interface Window {
