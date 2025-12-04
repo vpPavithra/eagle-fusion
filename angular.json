@@ -127,8 +127,7 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
-              ],
-              "i18nMissingTranslation": "warning"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -165,12 +164,6 @@
               "devServerTarget": "fusion:serve:production"
             }
           }
-        }
-      },
-      "i18n": {
-        "sourceLocale": "en",
-        "locales": {
-          "hi": "locale/messages.hi.xlf"
         }
       }
     },
